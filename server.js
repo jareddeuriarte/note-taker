@@ -1,50 +1,29 @@
-// const fs = require('fs')
-// const express = require('express')
-
-// const app = express();
-// const PORT = 3000;
-
-// app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
-
-// app.get('/', (req, res) => {
-//     res.send('Welcome to the Star Wars Page!');
-//   });
-
-
-  //Notes Resource
-//   notes=
-
 const express = require('express')
 const app = express()
-const port = 3000
+const PORT = 3000
 
-
-//GET Request
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
-
-//POST Request
-app.post('/', function (req, res) {
-    res.send('Got a POST request')
+app.listen(PORT, () => {
+    console.log(`App listening at http://localhost:${PORT}`)
   })
 
-//PUT Request
-app.put('/user', function (req, res) {
-    res.send('Got a PUT request at /user')
-  })
+//GET Request - landing page
+
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'public/index.html')));
+
+
+// //POST Request
+// app.post('/', function (req, res) {
+//     res.send('Got a POST request')
+//   })
+
+// //PUT Request
+// app.put('/user', function (req, res) {
+//     res.send('Got a PUT request at /user')
+//   })
 
 
 
 
-// User Story
-// AS A small business owner
-// I WANT to be able to write and save notes
-// SO THAT I can organize my thoughts and keep track of tasks I need to complete
 
 // Acceptance Criteria
 // GIVEN a note-taking application
