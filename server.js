@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const PORT = 8080
+const PORT = process.env.PORT || 3001;
 const path = require('path')
 const db = require('./db/db.json')
 const fs = require('fs')
@@ -21,31 +21,31 @@ app.get('/api/notes', (req, res) => {
     if (err) throw err;
 
     let existingNotes = JSON.parse(response);
-    console.log(response); 
+    console.log(response);
     res.json(existingNotes)
   });
 })
+
 //HTML REQUEST FOR THE GET 
 app.get('/notes/', (req, res) => {
-  
-    console.log("HTML route");
+
+  console.log("HTML route");
   res.sendFile(path.join(__dirname, 'public/notes.html'))
-  
 });
 
 //API POST REQUEST 
 app.post('/notes', (req, res) => {
   let newNote = req.body;
   console.log("New note", newNote);
-  newNote = {...req.body, "id": uuidv4()};
+  newNote = { ...req.body, "id": uuidv4() };
   fs.readFile("./db/db.json", "utf8", (err, response) => {
 
     if (err) throw err;
 
     let existingNotes = JSON.parse(response);
-    console.log(response); 
+    console.log(response);
 
-    //apend newNote to exisiting data 
+    //Apend newNote to exisiting data 
     existingNotes = [...existingNotes, newNote];
     console.log("combining two data", existingNotes)
 
@@ -55,9 +55,8 @@ app.post('/notes', (req, res) => {
       console.log("Note created!", newNote);
     });
 
-  }); //Closing Read  File 
+  }); //Closing readFile 
 })
-
 
 
 app.listen(PORT, () => {
