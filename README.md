@@ -14,6 +14,8 @@ Note Taker, simply, takes notes! This application is stripped down to the essent
 
 ## Deployment
 - [GitHub Repo](https://github.com/jareddeuriarte/note-taker)
+- [Deployed App](https://jot-it-down.herokuapp.com/notes)
+
   
 ![screenshot1](assests/landing-page.png)
 ![screenshot2](assests/note-entry.png)
